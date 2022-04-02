@@ -89,6 +89,10 @@ with sync_playwright() as playwright:
 
     page.locator("text=Nästa").click()
 
+    ppl_selector = page.locator('select[name="NumberOfPeople"]')
+    ppl_selector.select_option(people.get())
+    sleep(10)
+    page.locator("text=Nästa").click()
     page.wait_for_load_state("domcontentloaded")
     checkboxes = page.locator("text=Ja, jag bor i Sverige")
     count = checkboxes.count()
